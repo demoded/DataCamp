@@ -10,14 +10,22 @@ computer_science = [13.6,13.6,14.9,16.4,18.9,19.8,23.9,25.7,28.1,30.2,32.5,34.8,
 health = [77.1,75.5,76.9,77.4,77.9,78.9,79.2,80.5,81.9,82.3,83.5,84.1,84.4,84.6,85.1,85.3,85.7,85.5,85.2,84.6,83.9,83.5,83.0,82.4,81.8,81.5,81.3,81.9,82.1,83.5,83.5,85.1,85.8,86.5,86.5,86.0,85.9,85.4,85.2,85.1,85.0,84.8]
 education = [74.53532758,74.14920369,73.55451996,73.50181443,73.33681143,72.80185448,72.16652471,72.45639481,73.19282134,73.82114234,74.98103152,75.84512345,75.84364914,75.95060123,75.86911601,75.92343971,76.14301516,76.96309168,77.62766177,78.11191872,78.86685859,78.99124597,78.43518191,77.26731199,75.81493264,75.12525621,75.03519921,75.16370129999999,75.48616027,75.83816206,76.69214284,77.37522931,78.64424394,78.54494815,78.65074774,79.06712173,78.68630551,78.72141311,79.19632674,79.53290870000001,79.61862451,79.43281184]
 
-plt.plot(year, computer_science, color='red')
-plt.plot(year, physical_sciences, color='blue')
+plt.style.use('ggplot')
+plt.plot(year, computer_science, color='red', label='Computer Science')
+plt.plot(year, physical_sciences, color='blue', label='Physical Sciences')
+
+plt.legend(loc = 'lower center')
+
+cs_max = np.max(computer_science)
+yr_max = year[np.argmax(computer_science)]
+plt.annotate('Maximum', xy=(yr_max, cs_max), xytext=(yr_max+5, cs_max+5), arrowprops=dict(facecolor='black'))
+
 plt.xlabel('Year')
 plt.ylabel('Degrees awarded to women (%)')
 
-plt.xlim(1990, 2010) #limit showed data this year range
+plt.xlim(1980, 2010) #limit showed data this year range
 plt.ylim(0, 50) #limit Y axis
-plt.axis((1990,2010,0,50)) #the same limits like previous 2 lines, but in one line
+plt.axis((1980,2010,0,50)) #the same limits like previous 2 lines, but in one line
 
 plt.title('Degrees awarded to women (1990-2010)\nComputer Science (red)\nPhysical Sciences (blue)')
 plt.show()
